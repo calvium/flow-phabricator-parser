@@ -1,0 +1,27 @@
+{
+  "name": "flow-phabricator-parser",
+  "version": "0.1.0",
+  "description": "A flow output parser to be use with phabricator `arc lint`",
+  "main": "flowparser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calvium/flow-phabricator-parser.git"
+  },
+  "keywords": [
+    "flow",
+    "phabricator",
+    "parser"
+  ],
+  "author": "Pablo Carrillo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/calvium/flow-phabricator-parser/issues"
+  },
+  "homepage": "https://github.com/calvium/flow-phabricator-parser#readme",
+  "peerDependencies": {
+    "flow-bin": "*"
+  }
+}
