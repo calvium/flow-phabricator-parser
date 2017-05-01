@@ -11,7 +11,7 @@ Install the package with
 ```lang=bash
 npm install flow-phabricator-parser --save-dev 
 #or 
-yarn add flow-phabricator-parser
+yarn add flow-phabricator-parser --dev
 ```
 
 or copy the source file to your project.
