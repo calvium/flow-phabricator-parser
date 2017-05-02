@@ -27,19 +27,21 @@ create a `.arclint` file and add
     "type": "script-and-regex",
     "include": "(\\.js?$)",
     "exclude": [ ],
-    "script-and-regex.script": "sh -c '(node ./ProjectDir/node_modules/flow-phabricator-parser/flowparser.js ./ProjectDir \"$0\")'",
+    "script-and-regex.script": "sh -c '(node ./PATH_FROM_REPO_ROOT_TO_PROJECT/node_modules/flow-phabricator-parser/flowparser.js ./ProjectDir \"$0\")'",
     "script-and-regex.regex": "/^(?P<file>.*): line (?P<line>[0-9]*), col (?P<char>[0-9]*), (?P<severity>error|warning) - (?P<message>.*) \\((?P<code>[a-z-]+)\\)$/m"
     }
   }
 }
 ```
 
+> Replace `PATH_FROM_REPO_ROOT_TO_PROJECT` in the above with the path to directory containing your project's `project.json` file. If it's at the root, remove `/PATH_FROM_REPO_ROOT_TO_PROJECT` from the path above.
+
 Notes
 ----
 
 You **must** install the appropiate version of flow-bin for your project.
 
-We point to `"(\\.js?$)",` to get all the js files changed since last version. Also the parser will discard errors that doesn't belong to changed files. If you think some error reported is criptic you may want to runt flow in your __project folder__. 
+We point to `"(\\.js?$)",` to get all the js files changed since last version. Also the parser will discard errors that doesn't belong to changed files. If you think some error reported is cryptic you may want to run flow in your __project folder__. 
 
 On 
 
@@ -49,7 +51,8 @@ On
 
 we need to pass `./ProjectDir ` as the folder where flow will be run (AKA the folder of your `.flowconfig` file) relative to the root of the git repository.
 
-##Current Limitations
+Current Limitations
+-----
 
 - Flow is invoked for each file and the output processed for each different file.
 - Right now, in very big projects with many dependencies in `node_modules`; errors in the parsing are not impossible although really unlikely. To solve this we may need to move from `execFile` to a more robust mechanism.
