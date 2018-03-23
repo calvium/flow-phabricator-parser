@@ -1,6 +1,6 @@
 {
   "name": "flow-phabricator-parser",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A flow output parser to be use with phabricator `arc lint`",
   "main": "flowparser.js",
   "scripts": {

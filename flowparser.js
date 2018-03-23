@@ -47,7 +47,7 @@ try
     path = process.cwd() + "/" + file;
     const child = execFile(
         flow,
-        ['--json'],
+        ['check', '--json'],
         {
             cwd: dir,
             // This should bullet proof an issue where the flow output is too big
