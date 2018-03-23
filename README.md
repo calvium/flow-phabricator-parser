@@ -35,7 +35,7 @@ create a `.arclint` file and add
 ```
 
 > Replace `PATH_FROM_REPO_ROOT_TO_PROJECT` in the above with the path to directory containing your project's `project.json` file. 
-> If it's at the root, remove `/PATH_FROM_REPO_ROOT_TO_PROJECT` from the path above - including the / prefix.
+> If it's at the root, remove `/PATH_FROM_REPO_ROOT_TO_PROJECT` from the path above - including the `/` prefix.
 
 Next we need to ensure the appropriate version of flow-bin is installed.
 
