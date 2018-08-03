@@ -27,15 +27,22 @@ create a `.arclint` file and add
     "type": "script-and-regex",
     "include": "(\\.js?$)",
     "exclude": [ ],
-    "script-and-regex.script": "sh -c '(node ./PATH_FROM_REPO_ROOT_TO_PROJECT/node_modules/flow-phabricator-parser/flowparser.js ./PATH_FROM_REPO_ROOT_TO_PROJECT \"$0\")'",
+    "script-and-regex.script": "sh -c '(node ./PATH_FROM_REPO_ROOT_TO_PROJECT/node_modules/flow-phabricator-parser/flowparser.js ./PATH_FROM_REPO_ROOT_TO_FLOWCONFIG \"$0\")'",
     "script-and-regex.regex": "/^(?P<file>.*): line (?P<line>[0-9]*), col (?P<char>[0-9]*), (?P<severity>error|warning) - (?P<message>.*) \\((?P<code>[a-z-]+)\\)$/m"
     }
   }
 }
 ```
 
-> Replace `PATH_FROM_REPO_ROOT_TO_PROJECT` in the above with the path to directory containing your project's `project.json` file. 
-> If it's at the root, remove `/PATH_FROM_REPO_ROOT_TO_PROJECT` from the path above - including the `/` prefix.
+> Replace `PATH_FROM_REPO_ROOT_TO_FLOWCONFIG` in the above with the path to directory containing your project's `project.json` file. 
+> If it's at the root, remove `/PATH_FROM_REPO_ROOT_TO_FLOWCONFIG` from the path above - including the `/` prefix, so just `.` is left.
+> An optional parameter check can be pass at the end to the script so the line will look like
+> ```$lang=javascript
+> "script-and-regex.script": "sh -c '(node ./PATH_FROM_REPO_ROOT_TO_PROJECT/node_modules/flow-phabricator-parser/flowparser.js ./PATH_FROM_REPO_ROOT_TO_FLOWCONFIG \"$0\" check)'",
+> ```    
+> That will force to run flow in mode "check" (independent process) instead of status (server). [Flow #6025](https://github.com/facebook/flow/issues/6025) and [Flow #1428](https://github.com/facebook/flow/issues/1428) are issues that can be work around with this.
+> [Flow modes](https://stackoverflow.com/questions/38902752/whats-the-difference-between-running-flow-and-flow-check/38906176#38906176)
+
 
 Next we need to ensure the appropriate version of flow-bin is installed.
 
